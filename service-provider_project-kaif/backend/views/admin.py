@@ -363,18 +363,18 @@ def categories():
     """List all categories"""
     categories_list = CategoryFactory.get_all_categories()
     
-    # Count businesses per category
-    # CategoryFactory returns Category objects (not dicts). Add
-    # `id` and `count` attributes to each object so templates can use them.
+    # Count businesses per category and add Bootstrap icon class
     for category in categories_list:
-        # use the category.name as the identifier
         try:
             setattr(category, 'id', category.name)
             setattr(category, 'count', Business.objects(category=category.name).count())
+            # Add Bootstrap icon class (e.g., 'bi-broom') for template rendering
+            setattr(category, 'bootstrap_icon', CategoryFactory.get_bootstrap_icon(category.name))
         except Exception:
             # Defensive fallback: ensure attributes exist even if query fails
             setattr(category, 'id', getattr(category, 'name', None))
             setattr(category, 'count', 0)
+            setattr(category, 'bootstrap_icon', 'bi-grid')
     
     return render_template('admin/categories.html', categories=categories_list)
 

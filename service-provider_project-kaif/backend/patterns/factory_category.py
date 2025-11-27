@@ -33,6 +33,22 @@ class CategoryFactory:
     Factory for creating and managing service categories
     """
     
+    # Map category names to Bootstrap icon classes
+    _icon_map = {
+        'cleaning': 'broom',
+        'plumbing': 'wrench',
+        'electric': 'lightning-fill',
+        'painting': 'palette-fill',
+        'carpentry': 'hammer',
+        'gardening': 'flower1',
+        'hvac': 'snow',
+        'roofing': 'house-fill',
+        'pest_control': 'bug',
+        'appliance_repair': 'tools',
+        'locksmith': 'key-fill',
+        'moving': 'box-seam'
+    }
+    
     _categories = {
         'cleaning': Category(
             name='cleaning',
@@ -189,6 +205,20 @@ class CategoryFactory:
             Boolean indicating validity
         """
         return name in CategoryFactory._categories
+    
+    @staticmethod
+    def get_bootstrap_icon(category_name):
+        """
+        Get Bootstrap icon class name for a category.
+        
+        Args:
+            category_name: Category name (e.g., 'cleaning', 'plumbing')
+            
+        Returns:
+            Bootstrap icon class name (e.g., 'bi-broom') or default 'bi-grid'
+        """
+        icon = CategoryFactory._icon_map.get(category_name, 'grid')
+        return f'bi-{icon}'
     
     @staticmethod
     def register_category(category):
