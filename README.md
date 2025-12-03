@@ -1,3 +1,13 @@
+ Name                               NSU ID
+ Md Kaif Afran khan                2222134642
+ Rafsat Wairan                     2221602642
+ Umme Umama                        2222547042
+ kazi masrafi munna                2221517042
+ 
+
+
+
+
 # Service Provider Project (New Version)
 
 ## Overview
@@ -187,4 +197,5 @@ $env:FLASK_APP="backend/app.py"; python backend/app.py
 - **Built-ins:** Core built-in categories (cleaning, plumbing, electrical, etc.) are not stored in DB and cannot be edited/deleted; they show a "Built-in category (not editable)" note.
 
 ## Contributing
+
 See business owner guides and implementation docs for details on extending features and patterns.
